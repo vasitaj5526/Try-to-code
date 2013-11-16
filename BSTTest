@@ -1,0 +1,24 @@
+public class BSTTest{
+  public static void main(String[]args){
+    
+    OurBST tree = new OurBST();
+     tree.insert(50);tree.insert(25);tree.insert(75);
+    tree.insert(10);tree.insert(55);tree.insert(52);
+    tree.insert(90);tree.insert(20);tree.insert(2);
+    tree.insert(1);
+    System.out.println(tree.root.data);
+    System.out.println(tree.root.left.data);
+    System.out.println(tree.root.right.data);
+    System.out.println(tree.root.right.left.left.data);
+    System.out.println(tree.root.right.right.data);
+    System.out.println(tree.root.left.left.data);
+    System.out.println(tree.root.right.left.data);
+    System.out.println(tree.root.left.left.left.data);
+    System.out.println(tree.root.left.left.right.data);
+    System.out.println(tree.root.left.left.left.left.data);
+    
+    
+    int a = tree.Height(tree.root);
+    System.out.print("Height of tree " +a);
+}
+}
