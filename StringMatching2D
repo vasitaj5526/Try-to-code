@@ -1,0 +1,60 @@
+public class StringMatching2D{
+  public static void main(String[]args){
+    
+    int T1 =5;
+    int T2 =5;
+    char Text[][]= new char[T1][T2];
+    Text[0][0]='A'; Text[0][1]='B'; Text[0][2]='C';Text[0][3]='C';Text[0][4]='Z';
+    Text[1][0]='B'; Text[1][1]='I'; Text[1][2]='A';Text[1][3]='V';Text[1][4]='A';
+    Text[2][0]='C'; Text[2][1]='H'; Text[2][2]='D';Text[2][3]='H';Text[2][4]='S';
+    Text[3][0]='D'; Text[3][1]='G'; Text[3][2]='X';Text[3][3]='G';Text[3][4]='D';
+    Text[4][0]='E'; Text[4][1]='F'; Text[4][2]='E';Text[4][3]='H';Text[4][4]='Q';
+    char Pattern[] ={ 'I','H','G','F'};
+    int H1 =0;
+    int H2=0;
+    int V1 =0;
+    int V2=0;
+    for (int i=0; i<T2; i++){
+      for(int j=0; j<(T1-Pattern.length)+1 ; j++){
+        int k= 0;
+        while(k< Pattern.length && Pattern[k] == Text[i][j+k]){
+          k=k+1;
+        }
+        if(k==Pattern.length){
+          H1 = i; H2 =j; break;
+        }
+        else{
+          H1 = -1; H2 = -1;
+        }
+      }
+      if(H1 != -1)break;
+    }
+    if( H1 ==-1 && H2 == -1 && V1==0 && V2 ==0){
+      for(int a = 0; a <T1 ; a++){
+        for( int b = 0; b<(T2-Pattern.length)+1 ;b++){
+          int c =0;
+          while( c<Pattern.length &&Pattern[c]==Text[b+c][a]){
+            c=c+1;
+          }
+          if(c==Pattern.length){
+            V1= b; V2 = a; break;
+          }
+          else{
+            V1 = -1; V2 = -1;
+          }
+        }
+        if(V1 != -1) break;
+      }
+    }
+    if(V1==-1 && V2== -1 && H1==-1 && H2== -1){
+      System.out.println("Not found");
+    }
+    else if (H1 != -1 && H2 != -1){
+      System.out.println("The Horizontal found"+"["+ H1+ "]"+ "[" + H2+ "]" +"to " +"["+H1+"]"+"["+(H2+Pattern.length-1)+"]");
+    }
+    else if(V1 != -1 && V2 != -1){
+      System.out.println("the Vertical found" + "[" + V1 + "]" + "[" + V2 + "]" +" to" + "[" + (V1+Pattern.length-1) + "]" + "[" + V2+ "]");
+    }
+  }
+}
+                         
